@@ -46,7 +46,7 @@ const alwaysOptions = (
 	<>
 		<Nav.Link>
 			<Link to='/' style={linkStyle}>
-				Home
+				About Home Hero
 			</Link>
 		</Nav.Link>
 	</>
