@@ -18,6 +18,16 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Link>
+		<Nav.Link>
+			<Link to='todolist' style={linkStyle}>
+				Your To-Do-List
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='character' style={linkStyle}>
+				Your Chore Heros Home
+			</Link>
+		</Nav.Link>
 	</>
 )
 
