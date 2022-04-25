@@ -15,3 +15,5 @@ const CreateCharacter = (props) => {
         </>
     )
 }
+
+export default CreateCharacter
