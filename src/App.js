@@ -12,6 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import gamePage from './components/game/GameArea'
 
 const App = () => {
 
@@ -67,6 +68,14 @@ const App = () => {
               <RequireAuth user={user}>
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
+          />
+		  <Route
+            path='/character'
+            element={
+              <RequireAuth user={user}>
+                <gamePage user={user} />
+              </RequireAuth>
+            }
           />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
