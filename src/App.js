@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import GamePage from './components/game/GameArea'
+import ToDoList from './components/to-do/ToDoList'
 
 const App = () => {
 
@@ -61,23 +62,31 @@ const App = () => {
                 <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
               </RequireAuth>
             }
-          />
-          <Route
+          	/>
+          	<Route
             path='/change-password'
             element={
               <RequireAuth user={user}>
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
-          />
-		  <Route
-            path='/character'
-            element={
-              <RequireAuth user={user}>
-                <GamePage user={user} />
-              </RequireAuth>
-            }
-          />
-				</Routes>
+          	/>
+		  	<Route
+            	path='/character'
+           		element={
+              		<RequireAuth user={user}>
+                		<GamePage user={user} />
+              		</RequireAuth>
+            	}
+			/>
+			<Route 
+				path='/todolist'
+				element={
+					<RequireAuth user={user}>
+						<ToDoList user={user} />
+					</RequireAuth>
+				}
+			/>
+		</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
 						key={msgAlert.id}
