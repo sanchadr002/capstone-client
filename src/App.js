@@ -12,7 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import gamePage from './components/game/GameArea'
+import GamePage from './components/game/GameArea'
 
 const App = () => {
 
@@ -73,7 +73,7 @@ const App = () => {
             path='/character'
             element={
               <RequireAuth user={user}>
-                <gamePage user={user} />
+                <GamePage user={user} />
               </RequireAuth>
             }
           />
