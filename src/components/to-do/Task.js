@@ -9,4 +9,4 @@ const Task = (props) => {
     )
 }
 
-export default ToDoList
+export default Task
