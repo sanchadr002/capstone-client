@@ -12,8 +12,16 @@ import { useParams} from 'react-router-dom'
 const GamePage = (props) => {
     const [character, setChar] = useState(null)
     const { id } = useParams()
+    const [updated, setUpdated] = useState(false)
     console.log('id in gamePage', id)
     console.log('this is props in game page', props)
+    useEffect(() => {
+        getCharacter(id)
+            .then(res => setChar(res.data.char))
+            .catch((error) => {
+            })
+    }, [updated])
+    
     return(
         <>
             <div>
