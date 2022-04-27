@@ -14,7 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import GamePage from './components/game/GameArea'
 import ToDoList from './components/to-do/ToDoList'
-import CreateTaskForm from './components/to-do/CreateTaskForm'
+import CreateTask from './components/to-do/CreateTask'
 
 const App = () => {
 
@@ -116,7 +116,9 @@ const App = () => {
 					path='/task/create'
 					element={
 						<RequireAuth user={user}>
-							<CreateTaskForm user={user} />
+							<CreateTask
+								user={user} 
+							/>
 						</RequireAuth>
 					}
 				/>
