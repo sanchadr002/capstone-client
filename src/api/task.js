@@ -1,55 +1,26 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const signUp = (credentials) => {
-	return axios({
-		method: 'POST',
-		url: apiUrl + '/sign-up',
-		data: {
-			credentials: {
-				email: credentials.email,
-				password: credentials.password,
-				password_confirmation: credentials.passwordConfirmation,
-			},
-		},
-	})
-}
+// // index function
+// export const getAllTasks = () => {
+//     return axios(`${apiUrl}/task`)
+// }
 
-export const signIn = (credentials) => {
-	return axios({
-		url: apiUrl + '/sign-in',
-		method: 'POST',
-		data: {
-			credentials: {
-				email: credentials.email,
-				password: credentials.password,
-			},
-		},
-	})
-}
+// // show function
+// export const getOneTask = (tasiId) => {
+//     return axios(`${apiUrl}/task/${tasiId}`)
+// }
 
-export const signOut = (user) => {
-	return axios({
-		url: apiUrl + '/sign-out',
-		method: 'DELETE',
-		headers: {
-			Authorization: `Token token=${user.token}`,
-		},
-	})
-}
-
-export const changePassword = (passwords, user) => {
-	return axios({
-		url: apiUrl + '/change-password',
-		method: 'PATCH',
-		headers: {
-			Authorization: `Token token=${user.token}`,
-		},
-		data: {
-			passwords: {
-				old: passwords.oldPassword,
-				new: passwords.newPassword,
-			},
-		},
-	})
+// POST -> create function
+export const createTask = (user, newTask) => {
+    console.log('user', user)
+    console.log('this is newTask', newTask)
+    return axios({
+        url: `${apiUrl}/task`,
+        method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { task: newTask }
+    })
 }
