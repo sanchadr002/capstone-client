@@ -1,5 +1,5 @@
 const Task = (props) => {
-    console.log('this is props in ToDoList', Task)
+    console.log('this is props in ToDoList', props)
     return(
         <>
             <div>
