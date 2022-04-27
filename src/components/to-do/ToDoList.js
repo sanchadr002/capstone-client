@@ -1,4 +1,5 @@
 import Task from './Task'
+import {Link} from 'react-router-dom'
 
 const ToDoList = (props) => {
     console.log('this is props in ToDoList', props)
@@ -9,6 +10,7 @@ const ToDoList = (props) => {
                 <ul>
                     <li><Task /></li>
                 </ul>
+                <Link to='/task/create'>Add new task</Link>
             </div>
         </>
     )
