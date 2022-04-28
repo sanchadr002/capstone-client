@@ -10,47 +10,47 @@ const linkStyle = {
 
 const authenticatedOptions = (
 	<>
-		<Nav.Link>
+		<Nav.Item>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
-		</Nav.Link>
-		<Nav.Link>
+		</Nav.Item>
+		<Nav.Item>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
-		</Nav.Link>
-		<Nav.Link>
+		</Nav.Item>
+		<Nav.Item>
 			<Link to='todolist' style={linkStyle}>
 				Your To-Do-List
 			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='character/:id' style={linkStyle}>
+		</Nav.Item>
+		<Nav.Item>
+			<Link to='character/view' style={linkStyle}>
 				Your Chore Heros Home
 			</Link>
-		</Nav.Link>
+		</Nav.Item>
 	</>
 )
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Link>
+        <Nav.Item>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Link>
-        <Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Link>
+        </Nav.Item>
 	</>
 )
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		<Nav.Item>
 			<Link to='/' style={linkStyle}>
 				About Home Hero
 			</Link>
-		</Nav.Link>
+		</Nav.Item>
 	</>
 )
 
