@@ -9,6 +9,7 @@ import { useParams} from 'react-router-dom'
 //     flexFlow: 'row wrap'
 // }
 
+// test
 const GamePage = (props) => {
     const [character, setChar] = useState(null)
     const { id } = useParams()
