@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Card, Button, ListGroup, Form } from 'react-bootstrap'
+import { Card, Button, ListGroup, Form, Container, Spinner } from 'react-bootstrap'
 import {getCharacter} from '../../api/game'
 import { useParams} from 'react-router-dom'
 
@@ -27,11 +27,22 @@ const GameArea = (props) => {
         })
     }, [updated])
     
+    if (!character) {
+        return (
+            <Container fluid className="justify-content-center">
+                <Spinner animation="border" role="status" variant="warning" >
+                    <span className="visually-hidden">Loading....</span>
+                </Spinner>
+            </Container>
+        )
+    }
+
+
     return(
         <>
             <div>
                 GamePage
-                {/* <p>{character.name}</p> */}
+                <p>{character.name}</p>
             </div>
             <div>
                 store
