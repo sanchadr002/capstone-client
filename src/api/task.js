@@ -1,10 +1,16 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// // index function
-// export const getAllTasks = () => {
-//     return axios(`${apiUrl}/task`)
-// }
+// index function
+export const getAllTasks = (user) => {
+	return axios({
+        url: `${apiUrl}/task`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
 
 // // show function
 // export const getOneTask = (tasiId) => {
