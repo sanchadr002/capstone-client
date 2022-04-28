@@ -1,7 +1,9 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-//index
+
+// index function
+
 export const getAllTasks = (user) => {
 	return axios({
         url: `${apiUrl}/task`,

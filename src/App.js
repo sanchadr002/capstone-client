@@ -122,6 +122,14 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				<Route 
+					path='/store/view'
+					element={
+						<RequireAuth user={user}>
+							<Store user={user}/>
+						</RequireAuth>
+					}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
