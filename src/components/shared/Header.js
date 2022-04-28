@@ -24,7 +24,7 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Link>
 		<Nav.Link>
-			<Link to='character' style={linkStyle}>
+			<Link to='character/:id' style={linkStyle}>
 				Your Chore Heros Home
 			</Link>
 		</Nav.Link>

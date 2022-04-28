@@ -9,23 +9,28 @@ import { useParams} from 'react-router-dom'
 //     flexFlow: 'row wrap'
 // }
 
-const GamePage = (props) => {
+const GameArea = (props) => {
+
     const [character, setChar] = useState(null)
     const { id } = useParams()
     const [updated, setUpdated] = useState(false)
-    console.log('id in gamePage', id)
     console.log('this is props in game page', props)
+    console.log('id in gamePage', id)
     useEffect(() => {
         getCharacter(id)
-            .then(res => setChar(res.data.char))
-            .catch((error) => {
-            })
+        .then(res => {setChar(res.data.character)
+            console.log('this is character', character)
+        })
+        
+        .catch((error) => {
+        })
     }, [updated])
     
     return(
         <>
             <div>
                 GamePage
+                {/* <p>{character.name}</p> */}
             </div>
             <div>
                 store
@@ -34,4 +39,4 @@ const GamePage = (props) => {
     )
 }
 
-export default GamePage
+export default GameArea

@@ -12,7 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import GamePage from './components/game/GameArea'
+import GameArea from './components/game/GameArea'
 import ToDoList from './components/to-do/ToDoList'
 
 const App = () => {
@@ -71,10 +71,10 @@ const App = () => {
               </RequireAuth>}
           	/>
 		  	<Route
-            	path='/character'
+            	path='/character/:id'
            		element={
               		<RequireAuth user={user}>
-                		<GamePage user={user} />
+                		<GameArea user={user} />
               		</RequireAuth>
             	}
 			/>
