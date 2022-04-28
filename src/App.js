@@ -97,7 +97,7 @@ const App = () => {
 					}
           		/>
 		  		<Route
-            		path='/character/:id'
+            		path='/character/view'
            			element={
               			<RequireAuth user={user}>
                 			<GameArea user={user} />

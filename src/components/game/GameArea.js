@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import { Card, Button, ListGroup, Form } from 'react-bootstrap'
-import {getCharacter} from '../../api/game'
-import { useParams} from 'react-router-dom'
+import { Spinner, Container } from 'react-bootstrap'
+import {getTheCharacter} from '../../api/character'
 
 // const cardContainerLayout = {
 //     display: 'flex',
@@ -12,13 +11,11 @@ import { useParams} from 'react-router-dom'
 const GameArea = (props) => {
 
     const [character, setChar] = useState(null)
-    const { id } = useParams()
     const [updated, setUpdated] = useState(false)
     const {user} = props
     console.log('this is props in game page', props)
-    console.log('id in gamePage', id)
     useEffect(() => {
-        getCharacter(user, id)
+        getTheCharacter(user)
         .then(res => {setChar(res.data.character)
             console.log('this is character', character)
         })
@@ -26,12 +23,29 @@ const GameArea = (props) => {
         .catch((error) => {
         })
     }, [updated])
+
+
+    if (character) {
+        return (
+            <p>{character.name}</p>
+        )
+    }
+    if (!character) {
+        return (
+            <Container fluid className="justify-content-center">
+                <Spinner animation="border" role="status" variant="warning" >
+                    <span className="visually-hidden">Loading....</span>
+                </Spinner>
+            </Container>
+        )
+    }
+
     
     return(
         <>
             <div>
                 GamePage
-                {/* <p>{character.name}</p> */}
+                <p>{character}</p>
             </div>
             <div>
                 store
