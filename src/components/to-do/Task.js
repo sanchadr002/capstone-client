@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {getAllTasks} from '../../api/task'
 import { Link, useLocation } from 'react-router-dom'
-
+import { getOneTask } from '../../api/task'
 
 const Task = (props) => {
     const { state } = useLocation()
@@ -30,7 +30,17 @@ const Task = (props) => {
                 // })
                 console.log('tasks not displayed')
             })
-    }, [])
+        }, 
+    [])
+    const handleClick = (e) => {
+        // e === event
+        e.preventDefault()
+
+        //access task.coins 
+        // getOneTask(user, taskId)
+        //push task.coins to user.coins
+        //subtract task.coins from itself
+    }
 
     if (!tasks) {
         return <p>loading...</p>
@@ -51,9 +61,12 @@ const Task = (props) => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
             <>
-                <header>Title: {task.title}</header>
-                <li>Description: {task.description}</li>
-                <li>Coins: {task.coins}</li>
+                <form>
+                    <header>Title: {task.title}</header>
+                    <li>Description: {task.description}</li>
+                    <li>Coins: {task.coins}</li>
+                    <button name='completed'>Completed</button>
+                </form>
             </>
         ))
     }

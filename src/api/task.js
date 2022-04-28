@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// index function
+//index
 export const getAllTasks = (user) => {
 	return axios({
         url: `${apiUrl}/task`,
@@ -12,10 +12,16 @@ export const getAllTasks = (user) => {
     })
 }
 
-// // show function
-// export const getOneTask = (tasiId) => {
-//     return axios(`${apiUrl}/task/${tasiId}`)
-// }
+// show function
+export const getOneTask = (user, taskId) => {
+    return axios({
+        url: `${apiUrl}/task/${taskId}`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
 
 // POST -> create function
 export const createTask = (user, newTask) => {
@@ -30,3 +36,4 @@ export const createTask = (user, newTask) => {
         data: { task: newTask }
     })
 }
+
