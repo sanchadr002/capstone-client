@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
 import {getTheCharacter} from '../../api/character'
-
+import mans from '../../srcImg/mans.png'
 // const cardContainerLayout = {
 //     display: 'flex',
 //     justifyContent: 'center',
@@ -27,7 +27,11 @@ const GameArea = (props) => {
 
     if (character) {
         return (
-            <p>{character.name}</p>
+            <div>
+                <p>{character.name}</p>
+                <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
+
+            </div>
         )
     }
     if (!character) {
