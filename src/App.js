@@ -97,10 +97,10 @@ const App = () => {
 					}
           		/>
 		  		<Route
-            		path='/character'
+            		path='/character/:id'
            			element={
               			<RequireAuth user={user}>
-                			<GamePage user={user} />
+                			<GameArea user={user} />
               			</RequireAuth>
             		}
 				/>

@@ -14,10 +14,11 @@ const GameArea = (props) => {
     const [character, setChar] = useState(null)
     const { id } = useParams()
     const [updated, setUpdated] = useState(false)
+    const {user} = props
     console.log('this is props in game page', props)
     console.log('id in gamePage', id)
     useEffect(() => {
-        getCharacter(id)
+        getCharacter(user, id)
         .then(res => {setChar(res.data.character)
             console.log('this is character', character)
         })
