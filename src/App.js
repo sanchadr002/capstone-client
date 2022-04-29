@@ -15,10 +15,14 @@ import ChangePassword from './components/auth/ChangePassword'
 import GameArea from './components/game/GameArea'
 import ToDoList from './components/to-do/ToDoList'
 import CreateTask from './components/to-do/CreateTask'
+import Store from './components/store/Store'
+import ShowTask from './components/to-do/ShowTask'
+import {getTheCharacter} from './api/character'
 
 const App = () => {
 
 	const [user, setUser] = useState(null)
+	const [character, setCharacter] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -40,6 +44,14 @@ const App = () => {
 			return (
 				[{ heading, message, variant, id }]
       		)
+		})
+	}
+
+	const theCharacter = ({name, theClass, coins, sprite, ownedItems, owner}) => {
+		setCharacter(() => {
+			return(
+				{ name, theClass, coins, sprite, ownedItems, owner }
+			)
 		})
 	}
 
@@ -100,7 +112,7 @@ const App = () => {
             		path='/character/view'
            			element={
               			<RequireAuth user={user}>
-                			<GameArea user={user} />
+                			<GameArea user={user} theCharacter={theCharacter}/>
               			</RequireAuth>
             		}
 				/>
@@ -108,7 +120,15 @@ const App = () => {
 					path='/todolist'
 					element={
 						<RequireAuth user={user}>
-							<ToDoList user={user} />
+							<ToDoList user={user} theCharacter={theCharacter}/>
+						</RequireAuth>
+					}
+				/>
+				<Route 
+					path='/task/:id'
+					element={
+						<RequireAuth user={user}>
+							<ShowTask user={user}/>
 						</RequireAuth>
 					}
 				/>
@@ -116,9 +136,7 @@ const App = () => {
 					path='/task/create'
 					element={
 						<RequireAuth user={user}>
-							<CreateTask
-								user={user} 
-							/>
+							<CreateTask user={user}/>
 						</RequireAuth>
 					}
 				/>
