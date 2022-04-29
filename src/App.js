@@ -18,6 +18,7 @@ import CreateTask from './components/to-do/CreateTask'
 import Store from './components/store/Store'
 import ShowTask from './components/to-do/ShowTask'
 import {getTheCharacter} from './api/character'
+
 const App = () => {
 
 	const [user, setUser] = useState(null)
@@ -53,6 +54,7 @@ const App = () => {
 			)
 		})
 	}
+
 	return (
 		<Fragment>
 			<Header user={user} />
@@ -110,7 +112,7 @@ const App = () => {
             		path='/character/view'
            			element={
               			<RequireAuth user={user}>
-                			<GameArea user={user} />
+                			<GameArea user={user} theCharacter={theCharacter}/>
               			</RequireAuth>
             		}
 				/>
@@ -118,7 +120,7 @@ const App = () => {
 					path='/todolist'
 					element={
 						<RequireAuth user={user}>
-							<ToDoList user={user} />
+							<ToDoList user={user} theCharacter={theCharacter}/>
 						</RequireAuth>
 					}
 				/>

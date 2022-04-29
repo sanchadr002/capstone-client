@@ -10,31 +10,30 @@ import mans from '../../srcImg/mans.png'
 
 const GameArea = (props) => {
 
-    const [character, setChar] = useState(null)
     const [updated, setUpdated] = useState(false)
-    const {user} = props
+    const {user, theCharacter} = props
     console.log('this is props in game page', props)
-    useEffect(() => {
-        getTheCharacter(user)
-        .then(res => {setChar(res.data.character)
-            console.log('this is character', character)
-        })
+    // useEffect(() => {
+    //     getTheCharacter(user)
+    //     .then(res => {setChar(res.data.character)
+    //         console.log('this is character', character)
+    //     })
         
-        .catch((error) => {
-        })
-    }, [updated])
+    //     .catch((error) => {
+    //     })
+    // }, [updated])
+    theCharacter()
+    // if (){
+    //     console.log('this is theCharacter in GameArea', theCharacter)
+    //     return (
+    //         <div>
+    //             <p>{theCharacter.name}</p>
+    //             <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
 
-
-    if (character) {
-        return (
-            <div>
-                <p>{character.name}</p>
-                <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
-
-            </div>
-        )
-    }
-    if (!character) {
+    //         </div>
+    //     )
+    // }
+    if (!theCharacter) {
         return (
             <Container fluid className="justify-content-center">
                 <Spinner animation="border" role="status" variant="warning" >
@@ -48,7 +47,7 @@ const GameArea = (props) => {
         <>
             <div>
                 GamePage
-                <p>{character}</p>
+                <p>{theCharacter}</p>
             </div>
             <div>
                 store
