@@ -14,5 +14,5 @@ export const getTheCharacter = (user) => {
         headers: {
             Authorization: `Token token=${user.token}`
         }
-        })
-    }
+    })
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {getAllTasks} from '../../api/task'
 import { Link, useLocation } from 'react-router-dom'
 import { getOneTask } from '../../api/task'
+import { getTheCharacter } from '../../api/character'
 
 const Task = (props) => {
     const { state } = useLocation()
@@ -32,15 +33,6 @@ const Task = (props) => {
             })
         }, 
     [])
-    const handleClick = (e) => {
-        // e === event
-        e.preventDefault()
-
-        //access task.coins 
-        // getOneTask(user, taskId)
-        //push task.coins to user.coins
-        //subtract task.coins from itself
-    }
 
     if (!tasks) {
         return <p>loading...</p>
@@ -57,18 +49,39 @@ const Task = (props) => {
         //         {pet.fullTitle}
         //     </li>
         // ))
-        taskIndex = tasks.map(task => (
+        taskIndex = tasks.map(task => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
-            <>
-                <form>
-                    <header>Title: {task.title}</header>
-                    <li>Description: {task.description}</li>
-                    <li>Coins: {task.coins}</li>
-                    <button name='completed'>Completed</button>
-                </form>
-            </>
-        ))
+            console.log('this is task in Task', task)
+            const handleClick = (e) => {
+                // e === event
+                e.preventDefault()
+                //access task.coins 
+                getTheCharacter()
+                    .then(character => {
+                        character.coins += task.coins
+                        task.coins -= task.coins
+                    })
+                // .then((character) => {
+                //     character.coins += task.coins
+                //     task.coins -= task.coins
+                // })
+                .catch(console.error())
+                //push task.coins to user.coins
+                //subtract task.coins from itself
+            }
+
+            return(
+                <>
+                    <form>
+                        <header>Title: {task.title}</header>
+                        <li>Description: {task.description}</li>
+                        <li>Coins: {task.coins}</li>
+                        <button onClick={handleClick} name='completed'>Completed</button>
+                    </form>
+                </>
+            )
+        })
     }
     
     return(
