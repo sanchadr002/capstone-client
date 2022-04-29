@@ -7,7 +7,7 @@ const CreateTask = (props) => {
     
     const { user } = props
     const navigate = useNavigate()
-    const [task, setTask] = useState({title: '', description: '', coins: ''})
+    const [task, setTask] = useState({title: '', description: '', coins: 0})
     console.log('task in create', task)
 
     const handleChange = (e) => {
@@ -40,14 +40,16 @@ const CreateTask = (props) => {
             // if create is successful, we should navigate to the show page
             // .then(res => {navigate(`/task/${res.data.task.id}`)})
             // then we send a success message
-            .then(() =>
+            .then(res => {
                 // msgAlert({
                 //     heading: 'Pet Added! Success!',
                 //     message: createPetSuccess,
                 //     variant: 'success',
                 // })
+                console.log('this is res in CreateTask', res)
                 console.log('---task created---')
-            )
+                navigate(`/task/${res.data.task._id}`)
+            })
             // if there is an error, we'll send an error message
             .catch(() =>
                 // msgAlert({
