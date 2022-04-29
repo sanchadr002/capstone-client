@@ -34,16 +34,6 @@ const GameArea = (props) => {
             </div>
         )
     }
-    if (!character) {
-        return (
-            <Container fluid className="justify-content-center">
-                <Spinner animation="border" role="status" variant="warning" >
-                    <span className="visually-hidden">Loading....</span>
-                </Spinner>
-            </Container>
-        )
-    }
-
     
     if (!character) {
         return (
