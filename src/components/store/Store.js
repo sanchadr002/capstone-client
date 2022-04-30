@@ -21,6 +21,7 @@ const Store = (props) => {
         })
         
         .catch((error) => {
+            console.log(error)
         })
     }, [updated])
 
