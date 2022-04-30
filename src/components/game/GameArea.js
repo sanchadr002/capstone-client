@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
-import {getTheCharacter} from '../../api/character'
+import Store from '../store/Store'
 import mans from '../../srcImg/mans.png'
 // const cardContainerLayout = {
 //     display: 'flex',
@@ -10,9 +10,12 @@ import mans from '../../srcImg/mans.png'
 
 const GameArea = (props) => {
 
-    const [updated, setUpdated] = useState(false)
-    const {user, theCharacter} = props
+    const {user} = props
+    const [character, setCharacter] = useState(null)
     console.log('this is props in game page', props)
+    useEffect(() => {
+        setCharacter(user.playerCharacter)
+    })
     // useEffect(() => {
     //     getTheCharacter(user)
     //     .then(res => {setChar(res.data.character)
@@ -22,18 +25,18 @@ const GameArea = (props) => {
     //     .catch((error) => {
     //     })
     // }, [updated])
-    theCharacter()
-    // if (){
-    //     console.log('this is theCharacter in GameArea', theCharacter)
-    //     return (
-    //         <div>
-    //             <p>{theCharacter.name}</p>
-    //             <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
 
-    //         </div>
-    //     )
-    // }
-    if (!theCharacter) {
+    if (character){
+        console.log('this is character in GameArea', character)
+        return (
+            <div>
+                <p>{character.name}</p>
+                <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
+            </div>
+        )
+    }
+
+    if (!character) {
         return (
             <Container fluid className="justify-content-center">
                 <Spinner animation="border" role="status" variant="warning" >
@@ -47,10 +50,11 @@ const GameArea = (props) => {
         <>
             <div>
                 GamePage
-                <p>{theCharacter}</p>
+                <p>{character}</p>
             </div>
             <div>
                 store
+                <Store user={user}/>
             </div>
         </>
     )
