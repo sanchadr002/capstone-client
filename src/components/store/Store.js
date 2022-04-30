@@ -10,32 +10,20 @@ import {getStore} from '../../api/store'
 
 const Store = (props) => {
 
-    const [store, setStore] = useState(null)
-    const [updated, setUpdated] = useState(false)
     const {user} = props
+    const [store, setStore] = useState(null)
     console.log('this is props in game page', props)
-    useEffect(() => {
-        getStore(user)
-        .then(res => {
-
-            setStore(res.data.store)
-            console.log('this is store', store)
-        })
-        
-        .catch((error) => {
-            console.log(error)
-        })
-    }, [updated])
+    console.log('this is user.playerStore', user.playerStore)
 
     let storeIndex
-
-    if (store.inventory.length > 0) {
+    if (user.playerStore.inventory) {
         // petsJsx = pets.map(pet => (
         //     <li key={pet.id}>
         //         {pet.fullTitle}
         //     </li>
         // ))
-        storeIndex = store.inventory.map(item => {
+        console.log('this is user.playerStore.inventory', user.playerStore.inventory)
+        storeIndex = user.playerStore.inventory.map(item => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
             console.log('this is the item in Store', item)
@@ -57,16 +45,17 @@ const Store = (props) => {
             return(
                 <>
                     <form>
-                        <header>Description: {item.description}</header>
-                        <li>Cost: {item.cost}</li>
-                        {/* <button onClick={handleClick} name='completed'>Completed</button> */}
+                        <header>Description: {item.item.description}</header>
+                        <li>Cost: {item.item.cost}</li>
+                        <button name='buy'>Buy</button>
                     </form>
                 </>
             )
         })
+        console.log('this is storeIndex', storeIndex)
     }
 
-    if (!store) {
+    if (!user.playerStore.inventory) {
         return (
             <Container fluid className="justify-content-center">
                 <Spinner animation="border" role="status" variant="warning" >
@@ -79,10 +68,7 @@ const Store = (props) => {
 
     return(
         <>
-            <div>
-                Store area
-                <p>{storeIndex}</p>
-            </div>
+            {storeIndex}
         </>
     )
 }
