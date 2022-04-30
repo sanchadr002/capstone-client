@@ -57,16 +57,13 @@ const Task = (props) => {
                 // e === event
                 e.preventDefault()
                 //access task.coins 
-                getTheCharacter()
-                    .then(character => {
-                        character.coins += task.coins
-                        task.coins -= task.coins
-                    })
+                user.playerCharacter.coins += task.coins
+                task.coins -= task.coins
+                console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
                 // .then((character) => {
                 //     character.coins += task.coins
                 //     task.coins -= task.coins
                 // })
-                .catch(console.error())
                 //push task.coins to user.coins
                 //subtract task.coins from itself
             }
