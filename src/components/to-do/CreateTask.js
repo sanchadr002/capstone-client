@@ -48,7 +48,8 @@ const CreateTask = (props) => {
                 // })
                 console.log('this is res in CreateTask', res)
                 console.log('---task created---')
-                navigate(`/task/${res.data.task._id}`)
+                // navigate(`/task/${res.data.task._id}`)
+                navigate(`/todolist`)
             })
             // if there is an error, we'll send an error message
             .catch(() =>
