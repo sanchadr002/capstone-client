@@ -22,3 +22,29 @@ export const createStore = (user) => {
         }
     })
 }
+
+// POST -> Add to Cart
+export const addItem = (itemId, user, addItem) => {
+    console.log({ itemId })
+    return axios({
+        url: `${apiUrl}/character/${itemId}`,
+        method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { item: addItem }
+    })
+}
+
+// PATCH -> Update character
+export const updateItem = (user, updatedItem) => {
+    console.log('this is the updated Product', updatedItem)
+    return axios({
+        url: `${apiUrl}/character/${updatedItem.id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { Item: updatedItem }
+    })
+}
