@@ -29,59 +29,59 @@ const Store = (props) => {
 
     let storeIndex
 
-    if (store.inventory.length > 0) {
-        // petsJsx = pets.map(pet => (
-        //     <li key={pet.id}>
-        //         {pet.fullTitle}
-        //     </li>
-        // ))
-        storeIndex = store.inventory.map(item => {
-            // one method of styling, usually reserved for a single style
-            // we can use inline, just like in html
-            console.log('this is the item in Store', item)
-            // const handleClick = (e) => {
-            //     // e === event
-            //     e.preventDefault()
-            //     //access task.coins 
-            //     user.playerCharacter.coins += task.coins
-            //     task.coins -= task.coins
-            //     console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
-            //     // .then((character) => {
-            //     //     character.coins += task.coins
-            //     //     task.coins -= task.coins
-            //     // })
-            //     //push task.coins to user.coins
-            //     //subtract task.coins from itself
-            // }
+    // if (store.inventory.length > 0) {
+    //     // petsJsx = pets.map(pet => (
+    //     //     <li key={pet.id}>
+    //     //         {pet.fullTitle}
+    //     //     </li>
+    //     // ))
+    //     storeIndex = store.inventory.map(item => {
+    //         // one method of styling, usually reserved for a single style
+    //         // we can use inline, just like in html
+    //         console.log('this is the item in Store', item)
+    //         // const handleClick = (e) => {
+    //         //     // e === event
+    //         //     e.preventDefault()
+    //         //     //access task.coins 
+    //         //     user.playerCharacter.coins += task.coins
+    //         //     task.coins -= task.coins
+    //         //     console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
+    //         //     // .then((character) => {
+    //         //     //     character.coins += task.coins
+    //         //     //     task.coins -= task.coins
+    //         //     // })
+    //         //     //push task.coins to user.coins
+    //         //     //subtract task.coins from itself
+    //         // }
 
-            return(
-                <>
-                    <form>
-                        <header>Description: {item.description}</header>
-                        <li>Cost: {item.cost}</li>
-                        {/* <button onClick={handleClick} name='completed'>Completed</button> */}
-                    </form>
-                </>
-            )
-        })
-    }
+    //         return(
+    //             <>
+    //                 <form>
+    //                     <header>Description: {item.description}</header>
+    //                     <li>Cost: {item.cost}</li>
+    //                     {/* <button onClick={handleClick} name='completed'>Completed</button> */}
+    //                 </form>
+    //             </>
+    //         )
+    //     })
+    // }
 
-    if (!store) {
-        return (
-            <Container fluid className="justify-content-center">
-                <Spinner animation="border" role="status" variant="warning" >
-                    <span className="visually-hidden">Loading....</span>
-                </Spinner>
-            </Container>
-        )
-    }
+    // if (!store) {
+    //     return (
+    //         <Container fluid className="justify-content-center">
+    //             <Spinner animation="border" role="status" variant="warning" >
+    //                 <span className="visually-hidden">Loading....</span>
+    //             </Spinner>
+    //         </Container>
+    //     )
+    // }
 
 
     return(
         <>
             <div>
                 Store area
-                <p>{storeIndex}</p>
+                {/* <p>{storeIndex}</p> */}
             </div>
         </>
     )

@@ -60,6 +60,7 @@ const Task = (props) => {
                 // if (user.)
                 user.playerCharacter.coins += task.coins
                 task.coins -= task.coins
+                task.coins = 0
                 console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
                 // .then((character) => {
                 //     character.coins += task.coins
