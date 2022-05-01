@@ -62,16 +62,17 @@ const Task = (props) => {
                 console.log('this is the task _id', task._id)
                 e.preventDefault()
                 //access task.coins
+                user.playerCharacter.coins += task.coins
                 updateTask(user,task)
-                .then(() => {navigate(`/todolist`)})
+                .then(() => {
+                    task.coins -= task.coins
+                    task.completed = true
+                    console.log('this is if the task is completed or not', task.completed)
+                })
                 .catch(() => {
                     console.log('no update')
                 })
-                user.playerCharacter.coins += task.coins
-                task.coins -= task.coins
-                task.completed = true
                 console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
-                console.log('this is if the task is completed or not', task.completed)
                 // .then((character) => {
                 //     character.coins += task.coins
                 //     task.coins -= task.coins

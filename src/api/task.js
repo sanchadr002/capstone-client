@@ -40,7 +40,7 @@ export const createTask = (user, newTask) => {
 }
 
 // UPDATE -> update task
-export const updateTask = (user, updatedTask ) => {
+export const updateTask = (user, updatedTask) => {
     console.log('user in editing task' ,user)
     return axios({
         url: `${apiUrl}/task/${updatedTask._id}/edit`,
