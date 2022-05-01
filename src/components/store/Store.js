@@ -1,16 +1,20 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
-import {getStore, addItem, updateItem} from '../../api/store'
+import {getStore} from '../../api/store'
+
 // const cardContainerLayout = {
 //     display: 'flex',
 //     justifyContent: 'center',
 //     flexFlow: 'row wrap'
 // }
+
 const Store = (props) => {
+
     const {user} = props
     const [store, setStore] = useState(null)
     console.log('this is props in game page', props)
     console.log('this is user.playerStore', user.playerStore)
+
     let storeIndex
     if (user.playerStore.inventory) {
         // petsJsx = pets.map(pet => (
@@ -26,7 +30,7 @@ const Store = (props) => {
             const handleClick = (e) => {
             //     // e === event
                 e.preventDefault()
-            //     //access task.coins
+            //     //access task.coins 
             //     user.playerCharacter.coins += task.coins
                 console.log('this is user.playerCharacter.coins pre-transaction', user.playerCharacter.coins)
                 user.playerCharacter.coins -= item.item.cost
@@ -39,6 +43,7 @@ const Store = (props) => {
             //     //push task.coins to user.coins
             //     //subtract task.coins from itself
             }
+
             return(
                 <>
                     <form>
@@ -51,6 +56,7 @@ const Store = (props) => {
         })
         console.log('this is storeIndex', storeIndex)
     }
+
     if (!user.playerStore.inventory) {
         return (
             <Container fluid className="justify-content-center">
@@ -60,10 +66,13 @@ const Store = (props) => {
             </Container>
         )
     }
+
+
     return(
         <>
             {storeIndex}
         </>
     )
 }
+
 export default Store
