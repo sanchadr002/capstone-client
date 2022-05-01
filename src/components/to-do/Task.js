@@ -3,7 +3,7 @@ import {getAllTasks} from '../../api/task'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { getOneTask } from '../../api/task'
 import { getTheCharacter } from '../../api/character'
-import { updateTask } from '../../api/task'
+import { completeTask } from '../../api/task'
 
 const Task = (props) => {
     const { state } = useLocation()
@@ -59,20 +59,18 @@ const Task = (props) => {
             console.log('this is task in Task', task)
             const handleClick = (e) => {
                 // e === event
-                console.log('this is the task _id', task._id)
+                console.log('this is the task _id pre-update', task._id)
                 e.preventDefault()
                 //access task.coins
-                user.playerCharacter.coins += task.coins
-                updateTask(user,task)
-                .then(() => {
-                    task.coins -= task.coins
-                    task.completed = true
-                    console.log('this is if the task is completed or not', task.completed)
-                })
+                completeTask(user,task)
+                .then(() => {navigate(`/todolist`)})
                 .catch(() => {
                     console.log('no update')
                 })
+                user.playerCharacter.coins += task.coins
+                task.coins -= task.coins
                 console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
+                console.log('this is if the task is completed or not', task.completed)
                 // .then((character) => {
                 //     character.coins += task.coins
                 //     task.coins -= task.coins
