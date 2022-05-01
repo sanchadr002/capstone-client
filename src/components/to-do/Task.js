@@ -87,6 +87,7 @@ const Task = (props) => {
                         <li>Coins: {task.coins}</li>
                         <button  
                             // style={{ display: show ? "inline-block" : "none" }} 
+                            style={{ display: task.completed ? "none": "inline-block" }} 
                             onClick={handleClick} 
                             name='completed'
                         >
