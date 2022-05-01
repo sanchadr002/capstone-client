@@ -36,6 +36,7 @@ const Store = (props) => {
                 user.playerCharacter.coins -= item.item.cost
             //     task.coins -= task.coins
                 console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
+                console.log('this is the players inventory', user.playerCharacter.ownedItems)
             //     // .then((character) => {
             //     //     character.coins += task.coins
             //     //     task.coins -= task.coins

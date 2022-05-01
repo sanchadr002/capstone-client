@@ -84,7 +84,8 @@ const Task = (props) => {
                     <form key={task._id}>
                         <header>Title: {task.title}</header>
                         <li>Description: {task.description}</li>
-                        <li>Coins: {task.coins}</li>
+                        <li style={{ display: task.completed ? "none": "block" }}>Coins: {task.coins}</li>
+                        <li style={{ display: task.completed ? "block": "none" }}>Task is complete!</li>
                         <button  
                             // style={{ display: show ? "inline-block" : "none" }} 
                             style={{ display: task.completed ? "none": "inline-block" }} 
@@ -93,7 +94,7 @@ const Task = (props) => {
                         >
                             Completed
                         </button>
-                    </form>
+                    </form><br/>
                 </>
             )
         })
