@@ -27,6 +27,7 @@ const GameArea = (props) => {
     // }, [updated])
 
     if (character){
+        console.log('this is the user in game page', user)
         console.log('this is character in GameArea', character)
         return (
             <div>
