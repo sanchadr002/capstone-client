@@ -31,10 +31,10 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item>
-			<Link to='store/view' style={linkStyle}>
-				Your Chore Heros store
-			</Link>
-		</Nav.Item>
+            <Link to='store/view' style={linkStyle}>
+                Your Chore Heros store
+            </Link>
+        </Nav.Item>
 	</>
 )
 

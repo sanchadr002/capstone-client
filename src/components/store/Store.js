@@ -10,79 +10,65 @@ import {getStore} from '../../api/store'
 
 const Store = (props) => {
 
-    const [store, setStore] = useState(null)
-    const [updated, setUpdated] = useState(false)
     const {user} = props
+    const [store, setStore] = useState(null)
     console.log('this is props in game page', props)
-    useEffect(() => {
-        getStore(user)
-        .then(res => {
-
-            setStore(res.data.store)
-            console.log('this is store', store)
-        })
-        
-        .catch((error) => {
-            console.log(error)
-        })
-    }, [updated])
+    console.log('this is user.playerStore', user.playerStore)
 
     let storeIndex
+    if (user.playerStore.inventory) {
+        // petsJsx = pets.map(pet => (
+        //     <li key={pet.id}>
+        //         {pet.fullTitle}
+        //     </li>
+        // ))
+        console.log('this is user.playerStore.inventory', user.playerStore.inventory)
+        storeIndex = user.playerStore.inventory.map(item => {
+            // one method of styling, usually reserved for a single style
+            // we can use inline, just like in html
+            console.log('this is the item in Store', item)
+            // const handleClick = (e) => {
+            //     // e === event
+            //     e.preventDefault()
+            //     //access task.coins 
+            //     user.playerCharacter.coins += task.coins
+            //     task.coins -= task.coins
+            //     console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
+            //     // .then((character) => {
+            //     //     character.coins += task.coins
+            //     //     task.coins -= task.coins
+            //     // })
+            //     //push task.coins to user.coins
+            //     //subtract task.coins from itself
+            // }
 
-    // if (store.inventory.length > 0) {
-    //     // petsJsx = pets.map(pet => (
-    //     //     <li key={pet.id}>
-    //     //         {pet.fullTitle}
-    //     //     </li>
-    //     // ))
-    //     storeIndex = store.inventory.map(item => {
-    //         // one method of styling, usually reserved for a single style
-    //         // we can use inline, just like in html
-    //         console.log('this is the item in Store', item)
-    //         // const handleClick = (e) => {
-    //         //     // e === event
-    //         //     e.preventDefault()
-    //         //     //access task.coins 
-    //         //     user.playerCharacter.coins += task.coins
-    //         //     task.coins -= task.coins
-    //         //     console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
-    //         //     // .then((character) => {
-    //         //     //     character.coins += task.coins
-    //         //     //     task.coins -= task.coins
-    //         //     // })
-    //         //     //push task.coins to user.coins
-    //         //     //subtract task.coins from itself
-    //         // }
+            return(
+                <>
+                    <form>
+                        <header>Description: {item.item.description}</header>
+                        <li>Cost: {item.item.cost}</li>
+                        <button name='buy'>Buy</button>
+                    </form>
+                </>
+            )
+        })
+        console.log('this is storeIndex', storeIndex)
+    }
 
-    //         return(
-    //             <>
-    //                 <form>
-    //                     <header>Description: {item.description}</header>
-    //                     <li>Cost: {item.cost}</li>
-    //                     {/* <button onClick={handleClick} name='completed'>Completed</button> */}
-    //                 </form>
-    //             </>
-    //         )
-    //     })
-    // }
-
-    // if (!store) {
-    //     return (
-    //         <Container fluid className="justify-content-center">
-    //             <Spinner animation="border" role="status" variant="warning" >
-    //                 <span className="visually-hidden">Loading....</span>
-    //             </Spinner>
-    //         </Container>
-    //     )
-    // }
+    if (!user.playerStore.inventory) {
+        return (
+            <Container fluid className="justify-content-center">
+                <Spinner animation="border" role="status" variant="warning" >
+                    <span className="visually-hidden">Loading....</span>
+                </Spinner>
+            </Container>
+        )
+    }
 
 
     return(
         <>
-            <div>
-                Store area
-                {/* <p>{storeIndex}</p> */}
-            </div>
+            {storeIndex}
         </>
     )
 }
