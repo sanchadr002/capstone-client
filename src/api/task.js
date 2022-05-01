@@ -52,6 +52,25 @@ export const updateTask = (user, updatedTask) => {
     })
 }
 
+//Patch
+export const completeTask = (user, oldTask) => {
+    console.log('user in editing task' ,user)
+    const compTask = {task: {
+        title: oldTask.title,
+        description: oldTask.description,
+        coins: oldTask.coins,
+        completed: true
+    }}
+    return axios({
+        url: `${apiUrl}/task/${oldTask._id}/edit`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: compTask 
+    })
+}
+
 // DELETE -> Delete task
 export const removeTask = (user, taskId) => {
     console.log('user in deleting task', user)
