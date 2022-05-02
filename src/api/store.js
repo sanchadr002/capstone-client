@@ -68,3 +68,5 @@ export const buyItem = (user, oldItem) => {
         data: newItem 
     })
 }
+
+//this is to fix shanes code
