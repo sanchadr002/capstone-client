@@ -1,7 +1,13 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// patch
+// test
+
+// index function
+export const getCharacter = () => {
+    return axios(`${apiUrl}/character`)
+}
+
 export const patchCharacter = (user, character) => {
     console.log('this is character', character)
     return axios({

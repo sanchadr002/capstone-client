@@ -72,7 +72,7 @@ export const completeTask = (user, oldTask) => {
 }
 
 // DELETE -> Delete task
-export const removeTask = (user, taskId) => {
+export const deleteTask = (user, taskId) => {
     console.log('user in deleting task', user)
     return axios({
         url: `${apiUrl}/task/${taskId}`,

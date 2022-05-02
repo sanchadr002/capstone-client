@@ -1,6 +1,8 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// test
+
 // display store
 export const getStore = (user) => {
 	return axios({
