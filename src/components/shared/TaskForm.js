@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const TaskForm = (props) => {
 
@@ -7,8 +7,7 @@ const TaskForm = (props) => {
     return (
         <>
             <form 
-                onSubmit={handleSubmit}
-                 
+                onSubmit={handleSubmit}      
             >
                 Task title: 
                     <input 
@@ -44,4 +43,3 @@ const TaskForm = (props) => {
 }
 
 export default TaskForm
-//this is to fix shanes code

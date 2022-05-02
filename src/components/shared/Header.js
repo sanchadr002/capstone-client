@@ -85,4 +85,3 @@ const Header = ({ user }) => (
 )
 
 export default Header
-//this is to fix shanes code

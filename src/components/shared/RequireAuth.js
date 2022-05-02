@@ -4,4 +4,3 @@ export default function RequireAuth({ user, children }) {
 
 	return user !== null ? children : <Navigate to='/sign-in' replace />
 }
-//this is to fix shanes code
