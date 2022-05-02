@@ -1,13 +1,16 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// test
-
-// index function
+//////////////////////////////
+// INDEX -> GET  //
+//////////////////////////////
 export const getCharacter = () => {
     return axios(`${apiUrl}/character`)
 }
 
+/////////////////////////////////////
+// UPDATE -> PATCH  //
+/////////////////////////////////////
 export const patchCharacter = (user, character) => {
     console.log('this is character', character)
     return axios({
@@ -20,7 +23,9 @@ export const patchCharacter = (user, character) => {
     })
 }
 
-// show function
+//////////////////////////////////////////////
+// SHOW -> GET //
+//////////////////////////////////////////////
 export const getTheCharacter = (user) => {
     return axios({
         url: `${apiUrl}/character/view`,
@@ -30,4 +35,3 @@ export const getTheCharacter = (user) => {
         }
     })
 }
-//this is to fix shanes code
