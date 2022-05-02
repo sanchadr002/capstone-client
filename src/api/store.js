@@ -54,7 +54,7 @@ export const updateItem = (user, updatedItem) => {
 //Patch
 export const buyItem = (user, oldItem) => {
     console.log('user in editing task' ,user)
-    const newItem = {inventory: {
+    const newItem = {store: {
         description: oldItem.description,
         cost: oldItem.cost,
         bought: true
