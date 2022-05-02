@@ -3,7 +3,7 @@ import {getAllTasks} from '../../api/task'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { getOneTask } from '../../api/task'
 import { patchCharacter } from '../../api/character'
-import { completeTask } from '../../api/task'
+import { completeTask, deleteTask } from '../../api/task'
 
 const Task = (props) => {
     const { state } = useLocation()
@@ -84,6 +84,14 @@ const Task = (props) => {
                 //subtract task.coins from itself
                 // const handleStyle = setShow((s) => !s)
             }
+            const handleDelete = (e) => {
+                e.preventDefault()
+                deleteTask(user, task._id)
+                .then(() => {navigate('/todolist')})
+                .catch(() => {
+                    console.log('task not deleted')
+                })
+            }
             return(
                 <>
                     <form key={task._id}>
@@ -98,6 +106,12 @@ const Task = (props) => {
                             name='completed'
                         >
                             Completed
+                        </button>
+                        <button
+                            onClick={handleDelete}
+                            name='delete'
+                        >
+                            Delete Task
                         </button>
                     </form><br/>
                 </>
