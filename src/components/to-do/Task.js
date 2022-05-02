@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import {getAllTasks} from '../../api/task'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { getOneTask } from '../../api/task'
-import { getTheCharacter } from '../../api/character'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { completeTask } from '../../api/task'
 
 const Task = (props) => {
     const { state } = useLocation()
     const [tasks, setTasks] = useState(null)
-    const [show, setShow] = useState(true)
     const { user } = props
-    const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
         getAllTasks(user)
@@ -20,23 +16,13 @@ const Task = (props) => {
                 console.log('this is tasks', tasks)
             })
             .then(() =>
-                // msgAlert({
-                //     heading: 'Success!',
-                //     message: `Favorites shown!`,
-                //     variant: 'success',
-                // })
                 console.log('tasks displayed')
             )
             .catch(()=> {
-                // msgAlert({
-                //     heading: 'Oh No!',
-                //     message: 'Issue with retrieving favorites',
-                //     variant: 'danger',
-                // })
                 console.log('tasks not displayed')
             })
         }, 
-    [updated])
+    [])
 
     if (!tasks) {
         return <p>loading...</p>
@@ -48,11 +34,6 @@ const Task = (props) => {
     let taskIndex
 
     if (tasks.length > 0) {
-        // petsJsx = pets.map(pet => (
-        //     <li key={pet.id}>
-        //         {pet.fullTitle}
-        //     </li>
-        // ))
         taskIndex = tasks.map(task => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
@@ -61,7 +42,6 @@ const Task = (props) => {
                 // e === event
                 console.log('this is the task _id pre-update', task._id)
                 e.preventDefault()
-                //access task.coins
                 completeTask(user,task)
                 .then(() => {navigate(`/todolist`)})
                 .catch(() => {
@@ -71,13 +51,6 @@ const Task = (props) => {
                 task.coins -= task.coins
                 console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
                 console.log('this is if the task is completed or not', task.completed)
-                // .then((character) => {
-                //     character.coins += task.coins
-                //     task.coins -= task.coins
-                // })
-                //push task.coins to user.coins
-                //subtract task.coins from itself
-                // const handleStyle = setShow((s) => !s)
             }
             return(
                 <>
@@ -86,8 +59,7 @@ const Task = (props) => {
                         <li>Description: {task.description}</li>
                         <li style={{ display: task.completed ? "none": "block" }}>Coins: {task.coins}</li>
                         <li style={{ display: task.completed ? "block": "none" }}>Task is complete!</li>
-                        <button  
-                            // style={{ display: show ? "inline-block" : "none" }} 
+                        <button   
                             style={{ display: task.completed ? "none": "inline-block" }} 
                             onClick={handleClick} 
                             name='completed'

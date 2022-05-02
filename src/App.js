@@ -143,7 +143,8 @@ const App = () => {
 					path='/store/view'
 					element={
 						<RequireAuth user={user}>
-							<Store user={user}/>
+							<Store   msgAlert={msgAlert} 
+									 user={user}/>
 						</RequireAuth>
 					}
 				/>

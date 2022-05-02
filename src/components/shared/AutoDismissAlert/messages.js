@@ -6,4 +6,5 @@ export default {
 	signOutSuccess: 'Come back soon!',
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
+	tooBroke: "You can't afford this item, go do a task!"
 }
