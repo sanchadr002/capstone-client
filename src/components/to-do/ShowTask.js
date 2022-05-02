@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import { getOneTask, updateTask } from '../../api/task'
-import { useParams, useNavigate } from 'react-router-dom'
+import { getOneTask } from '../../api/task'
+import { useParams } from 'react-router-dom'
 
 
 const ShowTask = (props) => {
 
     const [task, setTask] = useState(null)
-    const [updated, setUpdated] = useState(false)
-    const {user, msgAlert} = props
+    const {user} = props
     const { taskId } = useParams()
-    const navigate = useNavigate()
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
         getOneTask(user, taskId)
@@ -18,19 +16,9 @@ const ShowTask = (props) => {
                 setTask(res.data.task)
             })
             .then(() => {
-                // msgAlert({
-                //     heading: 'Here is the pet!',
-                //     message: showPetSuccess,
-                //     variant: 'success',
-                // })
                 console.log('---task shown---')
             })
             .catch(() => {
-                // msgAlert({
-                //     heading: 'No pet found',
-                //     message: showPetFailure,
-                //     variant: 'danger',
-                // })
                 console.log('---task not shown---')
             })
     }, [])
@@ -56,11 +44,9 @@ const ShowTask = (props) => {
         )
     }
 
-
     return (
         {task}
     )
 }
 
 export default ShowTask
-//this is to fix shanes code
