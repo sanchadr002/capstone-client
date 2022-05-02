@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
 import {getStore} from '../../api/store'
-
+import {patchCharacter} from '../../api/character'
 // const cardContainerLayout = {
 //     display: 'flex',
 //     justifyContent: 'center',
@@ -39,8 +39,14 @@ const Store = (props) => {
                 console.log('this is user.playerCharacter.coins pre-transaction', user.playerCharacter.coins)
                 user.playerCharacter.coins -= item.item.cost
             //     task.coins -= task.coins
-                console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
-                console.log('this is the players inventory', user.playerCharacter.ownedItems)
+            user.playerCharacter.ownedItems.push(item)
+            patchCharacter(user, user.playerCharacter)
+            .then(() => {
+                console.log('---item added---')
+            })
+            .catch(err => console.log(err))
+            console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
+            console.log('this is the players inventory', user.playerCharacter.ownedItems)
             //     // .then((character) => {
             //     //     character.coins += task.coins
             //     //     task.coins -= task.coins

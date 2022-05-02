@@ -45,6 +45,6 @@ export const updateItem = (user, updatedItem) => {
         headers: {
             Authorization: `Token token=${user.token}`
         },
-        data: { Item: updatedItem }
+        data: { item: updatedItem }
     })
 }

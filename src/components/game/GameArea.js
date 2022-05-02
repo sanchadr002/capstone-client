@@ -11,10 +11,14 @@ import mans from '../../srcImg/mans.png'
 const GameArea = (props) => {
 
     const {user} = props
-    const [character, setCharacter] = useState(null)
+    const [character, setCharacter] = useState(user.playerCharacter)
     console.log('this is props in game page', props)
     useEffect(() => {
         setCharacter(user.playerCharacter)
+        // .then(() => {
+        //     console.log('this is character', character)
+        // })
+        // .catch((err) => console.log(err))
     })
 
     // useEffect(() => {
@@ -27,12 +31,41 @@ const GameArea = (props) => {
     //     })
     // }, [updated])
 
+    // if (character.ownedItems){
+    //     itemIndex = character.ownedItems.map(item => {
+    //         return(
+    //             <li>{item}</li>
+    //             )
+                
+    //         })
+    //     }
+        
+    //     if (!character.ownedItems){
+    //         return(
+    //             <>
+    //             loading items
+    //         </>
+    //     )
+    // }
+    
     if (character){
+        let itemIndex
         console.log('this is character in GameArea', character)
+        if (character.ownedItems){
+            itemIndex = character.ownedItems.map(item => {
+                console.log('this is item in GameArea', item)
+                return (
+                    <li>Item: {item.item.description}</li>
+                )
+            })
+        }
         return (
             <div>
                 <p>{character.name}</p>
                 <p>{character.coins}</p>
+                <ul>
+                    {itemIndex}
+                </ul>
                 <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
             </div>
         )
