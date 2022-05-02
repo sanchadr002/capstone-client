@@ -9,7 +9,7 @@ import mans from '../../srcImg/mans.png'
 // }
 
 const GameArea = (props) => {
-
+    const [updated, setUpdated] = useState(false)
     const {user} = props
     const [character, setCharacter] = useState(user.playerCharacter)
     console.log('this is props in game page', props)
@@ -20,6 +20,7 @@ const GameArea = (props) => {
         // })
         // .catch((err) => console.log(err))
     })
+    }, [updated])
 
     // useEffect(() => {
     //     getTheCharacter(user)
@@ -66,6 +67,7 @@ const GameArea = (props) => {
                 <ul>
                     {itemIndex}
                 </ul>
+
                 <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
             </div>
         )
@@ -89,7 +91,9 @@ const GameArea = (props) => {
             </div>
             <div>
                 store
-                <Store user={user}/>
+                {/* <Store 
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                user={user}/> */}
             </div>
         </>
     )
