@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {patchCharacter} from '../../api/character'
+import CharacterForm from './CharacterForm'
 
 const CreateCharacter = (props) => {
-    const { user, updateCharacter } = props
+    const { user } = props
     const [character, setChar] = useState(user.playerCharacter)
+
+    // useEffect(() => {
+    //     getTheCharacter(user)
+    //     .then((res) => {
+    //         console.log('this is res in Createcharacter', res)
+    //         setChar(res.data.character)
+    //     })
+    // })
 
     const handleChange = (e) => {
         // e === event
@@ -44,7 +53,6 @@ const CreateCharacter = (props) => {
                 // })
                 console.log('---character patched---')
             )
-            .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
             .catch(() =>
                 // msgAlert({
@@ -54,21 +62,22 @@ const CreateCharacter = (props) => {
                 // })
                 console.error()
             )
-        console.log('this is the pet', pet)
     }
 
     return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body>
-                <PetForm 
-                    pet={pet}
+    
+        
+        <>
+
+                <CharacterForm 
+                    character={character}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
-                    heading="Edit pet!"
+                    
                 />
-            </Modal.Body>
-        </Modal>
+        </>
+        
+    
     )
 }
 

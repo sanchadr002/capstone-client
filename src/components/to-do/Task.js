@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {getAllTasks} from '../../api/task'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { getOneTask } from '../../api/task'
-import { getTheCharacter } from '../../api/character'
+import { patchCharacter } from '../../api/character'
 import { completeTask } from '../../api/task'
 
 const Task = (props) => {
@@ -69,6 +69,11 @@ const Task = (props) => {
                 })
                 user.playerCharacter.coins += task.coins
                 task.coins -= task.coins
+                patchCharacter(user, user.playerCharacter)
+                .then(() => {
+                    console.log('---coins added---')
+                })
+                .catch(err => console.log(err))
                 console.log('this is user.playerCharacter.coins', user.playerCharacter.coins)
                 console.log('this is if the task is completed or not', task.completed)
                 // .then((character) => {

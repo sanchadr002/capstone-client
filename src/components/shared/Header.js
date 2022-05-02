@@ -26,13 +26,18 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item>
+			<Link to='character/create' style={linkStyle}>
+				Create Your Home Hero
+			</Link>
+		</Nav.Item>
+		<Nav.Item>
 			<Link to='character/view' style={linkStyle}>
-				Your Chore Heros Home
+				Your Hero's Home
 			</Link>
 		</Nav.Item>
 		<Nav.Item>
             <Link to='store/view' style={linkStyle}>
-                Your Chore Heros store
+                Your Hero's Store
             </Link>
         </Nav.Item>
 	</>
