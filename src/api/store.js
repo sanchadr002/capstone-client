@@ -48,3 +48,21 @@ export const updateItem = (user, updatedItem) => {
         data: { Item: updatedItem }
     })
 }
+
+//Patch
+export const buyItem = (user, oldItem) => {
+    console.log('user in editing task' ,user)
+    const newItem = {store: {
+        description: oldItem.description,
+        cost: oldItem.cost,
+        bought: true
+    }}
+    return axios({
+        url: `${apiUrl}/store/${oldItem._id}/edit`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: newItem 
+    })
+}
