@@ -1,7 +1,6 @@
 import Task from './Task'
 import {Link} from 'react-router-dom'
-import React, { useState } from 'react'
-import RequireAuth from '../shared/RequireAuth'
+import React from 'react'
 
 const ToDoList = (props) => {
     console.log('this is props in ToDoList', props)
@@ -20,4 +19,3 @@ const ToDoList = (props) => {
 }
 
 export default ToDoList
-//this is to fix shanes code
