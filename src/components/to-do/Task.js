@@ -7,7 +7,6 @@ import { completeTask, deleteTask } from '../../api/task'
 const Task = (props) => {
     const [tasks, setTasks] = useState(null)
     const { user } = props
-    const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
         getAllTasks(user)
@@ -23,7 +22,7 @@ const Task = (props) => {
                 console.log('tasks not displayed')
             })
         }, 
-    [updated])
+    [])
 
     if (!tasks) {
         return <p>loading...</p>
