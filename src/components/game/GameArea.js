@@ -8,6 +8,8 @@ import mans from '../../srcImg/mans.png'
 //     flexFlow: 'row wrap'
 // }
 
+// test
+
 const GameArea = (props) => {
 
     const {user} = props
