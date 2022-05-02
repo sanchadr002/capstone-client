@@ -1,6 +1,8 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// test
+
 // index function
 export const getCharacter = () => {
     return axios(`${apiUrl}/character`)
