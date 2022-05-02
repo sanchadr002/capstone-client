@@ -2,8 +2,9 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 
-// index function
-
+//////////////////////////////
+// INDEX -> GET  //
+//////////////////////////////
 export const getAllTasks = (user) => {
 	return axios({
         url: `${apiUrl}/task`,
@@ -14,7 +15,9 @@ export const getAllTasks = (user) => {
     })
 }
 
-// show function
+//////////////////////////////////////////////
+// SHOW -> GET  //
+//////////////////////////////////////////////
 export const getOneTask = (user, taskId) => {
     return axios({
         url: `${apiUrl}/task/${taskId}`,
@@ -25,7 +28,9 @@ export const getOneTask = (user, taskId) => {
     })
 }
 
-// POST -> create function
+////////////////////////////////
+// CREATE -> POST  //
+////////////////////////////////
 export const createTask = (user, newTask) => {
     console.log('user', user)
     console.log('this is newTask', newTask)
@@ -39,20 +44,9 @@ export const createTask = (user, newTask) => {
     })
 }
 
-// UPDATE -> update task
-export const updateTask = (user, updatedTask) => {
-    console.log('user in editing task' ,user)
-    return axios({
-        url: `${apiUrl}/task/${updatedTask._id}/edit`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { task: updatedTask }
-    })
-}
-
-//Patch
+////////////////////////////////
+// UPDATE -> PATCH  //
+////////////////////////////////
 export const completeTask = (user, oldTask) => {
     console.log('user in editing task' ,user)
     const compTask = {task: {
@@ -71,7 +65,9 @@ export const completeTask = (user, oldTask) => {
     })
 }
 
-// DELETE -> Delete task
+////////////////////////////
+// DESTROY -> DELETE //
+////////////////////////////
 export const deleteTask = (user, taskId) => {
     console.log('user in deleting task', user)
     return axios({
@@ -82,4 +78,3 @@ export const deleteTask = (user, taskId) => {
         }
     })
 }
-//this is to fix shanes code
