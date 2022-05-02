@@ -1,9 +1,9 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// test
-
-// display store
+//////////////////////////////
+// INDEX -> GET  //
+//////////////////////////////
 export const getStore = (user) => {
 	return axios({
         url: `${apiUrl}/store/view`,
@@ -14,7 +14,9 @@ export const getStore = (user) => {
     })
 }
 
-// create store
+////////////////////////////////
+// CREATE -> POST /characters //
+////////////////////////////////
 export const createStore = (user) => {
     return axios({
         url: `${apiUrl}/store`,
@@ -25,7 +27,10 @@ export const createStore = (user) => {
     })
 }
 
-// POST -> Add to Cart
+
+////////////////////////////////
+// CREATE -> POST  //
+////////////////////////////////
 export const addItem = (itemId, user, addItem) => {
     console.log({ itemId })
     return axios({
@@ -38,20 +43,9 @@ export const addItem = (itemId, user, addItem) => {
     })
 }
 
-// PATCH -> Update character
-export const updateItem = (user, updatedItem) => {
-    console.log('this is the updated Product', updatedItem)
-    return axios({
-        url: `${apiUrl}/character/${updatedItem.id}`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { item: updatedItem }
-    })
-}
-
-//Patch
+/////////////////////////////////////
+// UPDATE -> PATCH /characters/:id //
+/////////////////////////////////////
 export const buyItem = (user, oldItem) => {
     console.log('user in editing task' ,user)
     const newItem = {store: {
@@ -68,5 +62,3 @@ export const buyItem = (user, oldItem) => {
         data: newItem 
     })
 }
-
-//this is to fix shanes code
