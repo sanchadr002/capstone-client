@@ -3,12 +3,14 @@ import axios from 'axios'
 
 // patch
 export const patchCharacter = (user, character) => {
+    console.log('this is character', character)
     return axios({
         url: `${apiUrl}/character/${character._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
-        }
+        },
+        data: { character: character }
     })
 }
 

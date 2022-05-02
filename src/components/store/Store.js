@@ -2,7 +2,9 @@ import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 import {getStore} from '../../api/store'
+import {patchCharacter} from '../../api/character'
 import { buyItem } from '../../api/store'
+
 // const cardContainerLayout = {
 //     display: 'flex',
 //     justifyContent: 'center',
@@ -17,15 +19,19 @@ const Store = (props) => {
     console.log('this is props in game page', props)
     console.log('this is user.playerStore', user.playerStore)
 
+    useEffect(() => {
+        setStore(user.playerStore.inventory)
+    }, [])
+
     let storeIndex
-    if (user.playerStore.inventory) {
+    if (store) {
         // petsJsx = pets.map(pet => (
         //     <li key={pet.id}>
         //         {pet.fullTitle}
         //     </li>
         // ))
-        console.log('this is user.playerStore.inventory', user.playerStore.inventory)
-        storeIndex = user.playerStore.inventory.map(item => {
+        console.log('this is store', store)
+        storeIndex = store.map(item => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
             console.log('this is the item in Store', item)
@@ -48,8 +54,14 @@ const Store = (props) => {
                 console.log('this is user.playerCharacter.coins pre-transaction', user.playerCharacter.coins)
                 user.playerCharacter.coins -= item.item.cost
             //     task.coins -= task.coins
-                console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
-                console.log('this is the players inventory', user.playerCharacter.ownedItems)
+            user.playerCharacter.ownedItems.push(item)
+            patchCharacter(user, user.playerCharacter)
+            .then(() => {
+                console.log('---item added---')
+            })
+            .catch(err => console.log(err))
+            console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
+            console.log('this is the players inventory', user.playerCharacter.ownedItems)
             //     // .then((character) => {
             //     //     character.coins += task.coins
             //     //     task.coins -= task.coins
@@ -72,7 +84,7 @@ const Store = (props) => {
         console.log('this is storeIndex', storeIndex)
     }
 
-    if (!user.playerStore.inventory) {
+    if (!store) {
         return (
             <Container fluid className="justify-content-center">
                 <Spinner animation="border" role="status" variant="warning" >

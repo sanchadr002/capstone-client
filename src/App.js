@@ -17,6 +17,7 @@ import ToDoList from './components/to-do/ToDoList'
 import CreateTask from './components/to-do/CreateTask'
 import Store from './components/store/Store'
 import ShowTask from './components/to-do/ShowTask'
+import CreateCharacter from './components/game/CreateCharacter'
 
 const App = () => {
 
@@ -114,6 +115,14 @@ const App = () => {
                 			<GameArea user={user} />
               			</RequireAuth>
             		}
+				/>
+				<Route 
+					path='/character/create'
+					element={
+						<RequireAuth user={user}>
+							<CreateCharacter user={user} />
+						</RequireAuth>
+					}
 				/>
 				<Route 
 					path='/todolist'
