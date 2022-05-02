@@ -1,19 +1,15 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
-import {useNavigate} from 'react-router-dom'
 import {patchCharacter} from '../../api/character'
 
 const Store = (props) => {
-
     const {user} = props
     const [store, setStore] = useState(null)
     console.log('this is props in game page', props)
     console.log('this is user.playerStore', user.playerStore)
-
     useEffect(() => {
         setStore(user.playerStore.inventory)
     }, [])
-
     let storeIndex
     if (store) {
         console.log('this is store', store)
