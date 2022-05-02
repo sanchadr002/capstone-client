@@ -30,3 +30,4 @@ export const getTheCharacter = (user) => {
         }
     })
 }
+//this is to fix shanes code
