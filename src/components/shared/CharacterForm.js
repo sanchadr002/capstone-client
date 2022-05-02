@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const CharacterForm = (props) => {
-
     const {character, handleChange, handleSubmit} = props
     console.log('this is props in CharacterForm', props)
     return (
@@ -36,4 +35,3 @@ const CharacterForm = (props) => {
 }
 
 export default CharacterForm
-//this is to fix shanes code
