@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const CharacterForm = (props) => {
 
@@ -36,4 +36,3 @@ const CharacterForm = (props) => {
 }
 
 export default CharacterForm
-//this is to fix shanes code
