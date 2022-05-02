@@ -1,21 +1,12 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
-import {getStore} from '../../api/store'
 import {patchCharacter} from '../../api/character'
-import { buyItem } from '../../api/store'
-
-// const cardContainerLayout = {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     flexFlow: 'row wrap'
-// }
 
 const Store = (props) => {
 
-    const {user, triggerRefresh} = props
+    const {user} = props
     const [store, setStore] = useState(null)
-    const navigate = useNavigate()
     console.log('this is props in game page', props)
     console.log('this is user.playerStore', user.playerStore)
 
@@ -25,51 +16,27 @@ const Store = (props) => {
 
     let storeIndex
     if (store) {
-        // petsJsx = pets.map(pet => (
-        //     <li key={pet.id}>
-        //         {pet.fullTitle}
-        //     </li>
-        // ))
         console.log('this is store', store)
         storeIndex = store.map(item => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
             console.log('this is the item in Store', item)
             const handleClick = (e) => {
-                // triggerRefresh()
-            //     // e === event
+                // e === event
                 e.preventDefault()
-                console.log('this user in store', user)
-                // buyItem(user, item)
-                // .then(() => console.log('item is yours')
-                // )
-                // .catch(() => {
-                //     console.log('no update')
-                // })
-                let cart = item.item.description
-                user.playerCharacter.ownedItems.push(cart)
-            //     //access task.coins 
-            console.log('the owned items', user.playerCharacter.ownedItems)
-            //     user.playerCharacter.coins += task.coins
+                console.log('this user in store', user) 
+                console.log('the owned items', user.playerCharacter.ownedItems)
                 console.log('this is user.playerCharacter.coins pre-transaction', user.playerCharacter.coins)
                 user.playerCharacter.coins -= item.item.cost
-            //     task.coins -= task.coins
-            user.playerCharacter.ownedItems.push(item)
-            patchCharacter(user, user.playerCharacter)
-            .then(() => {
-                console.log('---item added---')
-            })
-            .catch(err => console.log(err))
-            console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
-            console.log('this is the players inventory', user.playerCharacter.ownedItems)
-            //     // .then((character) => {
-            //     //     character.coins += task.coins
-            //     //     task.coins -= task.coins
-            //     // })
-            //     //push task.coins to user.coins
-            //     //subtract task.coins from itself
+                user.playerCharacter.ownedItems.push(item)
+                patchCharacter(user, user.playerCharacter)
+                    .then(() => {
+                        console.log('---item added---')
+                    })
+                    .catch(err => console.log(err))
+                console.log('this is user.playerCharacter.coins post-transaction', user.playerCharacter.coins)
+                console.log('this is the players inventory', user.playerCharacter.ownedItems)
             }
-
             return(
                 <>
                     <form>
@@ -83,7 +50,6 @@ const Store = (props) => {
         })
         console.log('this is storeIndex', storeIndex)
     }
-
     if (!store) {
         return (
             <Container fluid className="justify-content-center">
@@ -93,14 +59,10 @@ const Store = (props) => {
             </Container>
         )
     }
-
-
     return(
         <>
             {storeIndex}
         </>
     )
 }
-
 export default Store
-//this is to fix shanes code
