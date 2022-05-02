@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import {getAllTasks} from '../../api/task'
-<<<<<<< HEAD
-import { useNavigate, useLocation } from 'react-router-dom'
-=======
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { getOneTask } from '../../api/task'
 import { patchCharacter } from '../../api/character'
->>>>>>> f92747990ac065bc433f49d9aa0145e22b1be10f
-import { completeTask } from '../../api/task'
+import { completeTask, removeTask } from '../../api/task'
 
 const Task = (props) => {
     const { state } = useLocation()
@@ -29,7 +25,16 @@ const Task = (props) => {
             })
         }, 
     [])
-
+    const removeTheTask = () => {
+        removeTask(user, tasks._id)
+            .then(() => {
+                console.log('task is killed')
+            })
+            .then(() => {navigate(`/todolist`)})
+            .catch(() => {
+                console.log('didnt work')
+            })
+    }
     if (!tasks) {
         return <p>loading...</p>
     } else if (tasks.length === 0) {
@@ -77,6 +82,7 @@ const Task = (props) => {
                         >
                             Completed
                         </button>
+                        <button onClick={removeTheTask()}>I didn't do this, delete it</button>
                     </form><br/>
                 </>
             )

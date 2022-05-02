@@ -7,24 +7,26 @@ import mans from '../../srcImg/mans.png'
 //     justifyContent: 'center',
 //     flexFlow: 'row wrap'
 // }
+
+// test
+
 const GameArea = (props) => {
+
     const {user} = props
-    const [character, setCharacter] = useState(null)
+    const [character, setCharacter] = useState(user.playerCharacter)
     console.log('this is props in game page', props)
     useEffect(() => {
         setCharacter(user.playerCharacter)
+        // .then(() => {
+        //     console.log('this is character', character)
+        // })
+        // .catch((err) => console.log(err))
     })
 
     // useEffect(() => {
     //     getTheCharacter(user)
     //     .then(res => {setChar(res.data.character)
     //         console.log('this is character', character)
-    //     })
-        
-    //     .catch((error) => {
-    //     })
-    // }, [updated])
-
     //     })
         
     //     .catch((error) => {
@@ -66,7 +68,6 @@ const GameArea = (props) => {
                 <ul>
                     {itemIndex}
                 </ul>
-
                 <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
             </div>
         )
@@ -90,9 +91,7 @@ const GameArea = (props) => {
             </div>
             <div>
                 store
-                {/* <Store 
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                user={user}/> */}
+                <Store user={user}/>
             </div>
         </>
     )
