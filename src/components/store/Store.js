@@ -15,15 +15,19 @@ const Store = (props) => {
     console.log('this is props in game page', props)
     console.log('this is user.playerStore', user.playerStore)
 
+    useEffect(() => {
+        setStore(user.playerStore.inventory)
+    }, [])
+
     let storeIndex
-    if (user.playerStore.inventory) {
+    if (store) {
         // petsJsx = pets.map(pet => (
         //     <li key={pet.id}>
         //         {pet.fullTitle}
         //     </li>
         // ))
-        console.log('this is user.playerStore.inventory', user.playerStore.inventory)
-        storeIndex = user.playerStore.inventory.map(item => {
+        console.log('this is store', store)
+        storeIndex = store.map(item => {
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
             console.log('this is the item in Store', item)
@@ -58,7 +62,7 @@ const Store = (props) => {
         console.log('this is storeIndex', storeIndex)
     }
 
-    if (!user.playerStore.inventory) {
+    if (!store) {
         return (
             <Container fluid className="justify-content-center">
                 <Spinner animation="border" role="status" variant="warning" >

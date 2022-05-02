@@ -16,6 +16,7 @@ const GameArea = (props) => {
     useEffect(() => {
         setCharacter(user.playerCharacter)
     })
+
     // useEffect(() => {
     //     getTheCharacter(user)
     //     .then(res => {setChar(res.data.character)
@@ -27,11 +28,11 @@ const GameArea = (props) => {
     // }, [updated])
 
     if (character){
-        console.log('this is the user in game page', user)
         console.log('this is character in GameArea', character)
         return (
             <div>
                 <p>{character.name}</p>
+                <p>{character.coins}</p>
                 <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
             </div>
         )
