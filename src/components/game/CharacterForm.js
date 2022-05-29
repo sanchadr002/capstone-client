@@ -1,37 +1,46 @@
 import React from 'react'
+import { Form, FormField, TextInput, Button, Box } from 'grommet'
 
 const CharacterForm = (props) => {
 
     const {character, handleChange, handleSubmit} = props
     console.log('this is props in CharacterForm', props)
     return (
-        <>
-            <form 
+        <Box
+            direction="row"
+			border={{ color: 'brand', size: 'large' }}
+			pad="medium"
+			margin={{
+				top: "3em",
+				left: "30em",
+				right: "30em"
+			}}
+        >
+            <Form 
                 name='character'
                 onSubmit={handleSubmit}
             >
-                Character name: 
-                    <input 
-                        type="text" 
+                <FormField label="Character Name: ">
+                    <TextInput 
+                        placeholder={character.name}
                         value={character.name}
-                        name='name'
                         onChange={handleChange}
                     />
+                </FormField>
                 <br/>
-                Character class: 
-                    <input 
-                        type="text" 
+                <FormField label="Character Class: ">
+                    <TextInput
+                        placeholder={character.class}
                         value={character.class}
-                        name='class'
                         onChange={handleChange}
                     />
-                <br/>
-                <input 
+                </FormField>
+                <Button 
                     type="submit" 
-                    value="Create character"    
+                    label="Create character"    
                 />
-            </form>
-        </>
+            </Form>
+        </Box>
     )
 }
 
