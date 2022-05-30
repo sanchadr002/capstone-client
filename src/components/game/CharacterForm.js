@@ -25,6 +25,7 @@ const CharacterForm = (props) => {
                         placeholder={character.name}
                         value={character.name}
                         onChange={handleChange}
+                        name="name"
                     />
                 </FormField>
                 <br/>
@@ -33,6 +34,7 @@ const CharacterForm = (props) => {
                         placeholder={character.class}
                         value={character.class}
                         onChange={handleChange}
+                        name="class"
                     />
                 </FormField>
                 <Button 
