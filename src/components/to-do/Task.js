@@ -3,6 +3,7 @@ import {getAllTasks} from '../../api/task'
 import { useNavigate } from 'react-router-dom'
 import { patchCharacter } from '../../api/character'
 import { completeTask, deleteTask } from '../../api/task'
+import { Card, CardHeader, CardBody, CardFooter, Text, Button } from 'grommet'
 
 const Task = (props) => {
     const [tasks, setTasks] = useState(null)
@@ -67,25 +68,40 @@ const Task = (props) => {
             }
             return(
                 <>
-                    <form key={task._id}>
-                        <header>Title: {task.title}</header>
-                            <li>Description: {task.description}</li>
-                            <li style={{ display: task.completed ? "none": "block" }}>Coins: {task.coins}</li>
-                            <li style={{ display: task.completed ? "block": "none" }}>Task is complete!</li>
-                        <button  
-                            style={{ display: task.completed ? "none": "inline-block" }} 
-                            onClick={handleClick} 
-                            name='completed'
+                    <Card
+                        height="medium"
+                        width="medium"
+                        pad="medium"
+                        background="light-1"
+                        margin="small"
+                    >
+                        <CardHeader pad="small">
+                            <Text weight="bold">{task.title}</Text>
+                        </CardHeader>
+                            <CardBody pad="small">
+                                <Text margin={{bottom:"small"}}>Description: {task.description}</Text>
+                                <li style={{ display: task.completed ? "none": "block" }}>Coins: {task.coins}</li>
+                                <li style={{ display: task.completed ? "block": "none" }}>Task is complete!</li>
+                            </CardBody>
+                        <CardFooter
+                            pad="small"
+                            background="light-2"
                         >
-                            Completed
-                        </button>
-                        <button
-                            onClick={handleDelete}
-                            name='delete'
-                        >
-                            Delete Task
-                        </button>
-                    </form><br/>
+                            <Button  
+                                secondary
+                                style={{ display: task.completed ? "none": "inline-block" }} 
+                                onClick={handleClick} 
+                                name='completed'
+                                label="Mark As Completed"
+                            />
+                            <Button
+                                secondary
+                                onClick={handleDelete}
+                                name='delete'
+                                label="Delete Task"
+                            />
+                        </CardFooter>
+                    </Card><br/>
                 </>
             )
         })
