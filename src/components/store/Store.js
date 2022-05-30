@@ -87,6 +87,9 @@ const Store = (props) => {
 				right: "30em"
 			}}
         >
+        <Heading>
+            {user.playerCharacter.name}'s Personal Shop
+        </Heading>
             {storeIndex}
         </Box>
     )
