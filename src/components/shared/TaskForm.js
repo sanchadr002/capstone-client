@@ -1,44 +1,56 @@
 import React from 'react'
+import { Form, FormField, TextInput, Button, Box, Select, Text } from 'grommet'
 
 const TaskForm = (props) => {
 
     const {task, handleChange, handleSubmit} = props
     console.log('this is props in TaskForm', props)
     return (
-        <>
-            <form 
+        <Box
+            direction="column"
+			border={{ color: 'brand', size: 'large' }}
+			pad="medium"
+			margin={{
+			    top: "3em",
+				left: "40em",
+				right: "40em",
+			}}
+        >
+            <Form 
                 onSubmit={handleSubmit}      
             >
-                Task title: 
-                    <input 
-                        type="text" 
-                        name='title'
+                <FormField label="Task title: ">
+                    <TextInput 
+                        placeholder="title"
+                        name="title"
                         value={task.title}
                         onChange={handleChange}
                     />
-                <br/>
-                Task description: 
-                    <input 
-                        type="text" 
-                        name='description'
+                </FormField>
+                <FormField label="Task description: ">
+                    <TextInput 
+                        placeholder="description"
+                        name="description"
                         value={task.description}
                         onChange={handleChange}
                     />
+                </FormField>
                 <br/>
-                Coins: 
-                    <input 
-                        type="number" 
+                <FormField label="Coins: "> 
+                    <Select 
+                        options={ [1, 2, 3] }
+                        placeholder="choose a coin amount"
                         name='coins'
-                        value={task.coins}
                         onChange={handleChange}
-                    />  
+                    />
+                </FormField>
                 <br/>
-                <input 
+                <Button 
                     type="submit" 
-                    value="Create task"    
+                    label="Create task"    
                 />
-            </form>
-        </>
+            </Form>
+        </Box>
     )
 }
 
