@@ -17,7 +17,9 @@ const GameArea = (props) => {
             itemIndex = character.ownedItems.map(item => {
                 console.log('this is item in GameArea', item)
                 return (
-                    <li>Item: {item.item.description}</li>
+                    <Box margin="xxsmall">
+                        <Text size="small"><br/>{item.item.description}<br/></Text>
+                    </Box>
                 )
             })
         }
@@ -39,9 +41,9 @@ const GameArea = (props) => {
                     data={[
                         { label: "Character class: ", value: `${character.class}` },
                         { label: "Character coins: ", value: `${character.coins}` },
-                        { label: "Character inventory: ", value: <List data={itemIndex}/>}
                     ]}
                 />
+                <Text>Character inventory: {itemIndex}</Text>
                 <Image 
                     fit="contain"
                     src={mans} 
