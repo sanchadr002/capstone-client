@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
 import mans from '../../srcImg/mans.png'
+import { Box, Text, Image, List, Heading } from 'grommet'
 
 const GameArea = (props) => {
     const {user} = props
@@ -21,14 +22,32 @@ const GameArea = (props) => {
             })
         }
         return (
-            <div>
-                <p>{character.name}</p>
-                <p>{character.coins}</p>
-                <ul>
-                    {itemIndex}
-                </ul>
-                <img width= "450" height= "450" src= {mans} alt="img placeholder"></img>
-            </div>
+            <Box
+                direction="column"
+			    border={{ color: 'brand', size: 'large' }}
+			    pad="medium"
+			    margin={{
+				    top: "3em",
+				    left: "35em",
+				    right: "35em"
+			    }}
+            >
+                <Heading margin="auto">{character.name}</Heading>
+                <List 
+                    primaryKey="label"
+                    secondaryKey="value"
+                    data={[
+                        { label: "Character class: ", value: `${character.class}` },
+                        { label: "Character coins: ", value: `${character.coins}` },
+                        { label: "Character inventory: ", value: <List data={itemIndex}/>}
+                    ]}
+                />
+                <Image 
+                    fit="contain"
+                    src={mans} 
+                    alt="img placeholder"
+                />
+            </Box>
         )
     }
     if (!character) {
