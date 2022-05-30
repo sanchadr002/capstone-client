@@ -38,6 +38,7 @@ const CharacterForm = (props) => {
                     />
                 </FormField>
                 <Button 
+                    primary
                     type="submit" 
                     label="Create character"    
                 />

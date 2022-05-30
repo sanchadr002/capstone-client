@@ -45,7 +45,8 @@ const TaskForm = (props) => {
                     />
                 </FormField>
                 <br/>
-                <Button 
+                <Button
+                    primary 
                     type="submit" 
                     label="Create task"    
                 />
