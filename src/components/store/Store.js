@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { Spinner, Container } from 'react-bootstrap'
 import {patchCharacter} from '../../api/character'
+import { Box, Form, FormField, Button, Heading, Card, CardHeader, CardBody, CardFooter, Text } from 'grommet'
 
 const Store = (props) => {
     const {user} = props
@@ -34,14 +35,33 @@ const Store = (props) => {
                 console.log('this is the players inventory', user.playerCharacter.ownedItems)
             }
             return(
-                <>
-                    <form>
-                        <header>Description: {item.item.description}</header>
-                        <li>Cost: {item.item.cost}</li>
-                        <button style={{ display: item.item.bought ? "none": "inline-block" }}
-                        onClick={handleClick} name='buy'>Buy</button>
-                    </form>
-                </>
+                <Card 
+                    height="small" 
+                    width="medium" 
+                    background="light-1"
+                    pad="small"
+                    margin="small"
+                >
+                    <CardHeader pad="small">
+                        <Text weight="bold">{item.item.description}</Text>
+                    </CardHeader>
+                    <CardBody pad="small">{item.item.cost} coins</CardBody>
+                    <CardFooter 
+                        pad="small" 
+                        background="light-2"
+                    >
+                        <Button 
+                            secondary 
+                            label="Buy" 
+                            as="button" 
+                            style={{ 
+                                display: item.item.bought ? "none": "inline-block",  
+                            }}
+                            onClick={handleClick} 
+                            name='buy'
+                        />
+                    </CardFooter>
+                </Card>
             )
         })
         console.log('this is storeIndex', storeIndex)
@@ -56,9 +76,19 @@ const Store = (props) => {
         )
     }
     return(
-        <>
+        <Box
+            direction="column"
+            border={{ color: 'brand', size: 'large'}}
+            pad="medium"
+            align="center"
+			margin={{
+				top: "3em",
+				left: "30em",
+				right: "30em"
+			}}
+        >
             {storeIndex}
-        </>
+        </Box>
     )
 }
 export default Store
