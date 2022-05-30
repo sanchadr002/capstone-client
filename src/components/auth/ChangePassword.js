@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { changePassword } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, FormField, Button, Box, Heading, TextInput } from 'grommet'
 
 const ChangePassword = (props) => {
 	// constructor(props) {
@@ -53,38 +52,60 @@ const ChangePassword = (props) => {
 
 
     return (
-        <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Change Password</h3>
+        <Box
+            direction="column"
+			border={{ color: 'brand', size: 'large' }}
+			pad="medium"
+			margin={{
+				top: "3em",
+				left: "35em",
+				right: "35em"
+			}}
+        >
+                <Heading level="3">Change Password</Heading>
                 <Form onSubmit={onChangePassword}>
-                    <Form.Group controlId='oldPassword'>
-                        <Form.Label>Old password</Form.Label>
-                        <Form.Control
+                        <FormField label="Old password">
+                            <TextInput 
+                                required
+                                name="oldPassword"
+                                type="password"
+                                placeholder="Enter old password"
+                                value={oldPassword}
+                                onChange={e => setOldPassword(e.target.value)}
+                            />
+                        </FormField>
+                        {/* <Form.Control
                             required
                             name='oldPassword'
                             value={oldPassword}
                             type='password'
                             placeholder='Old Password'
                             onChange={e => setOldPassword(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group controlId='newPassword'>
-                        <Form.Label>New Password</Form.Label>
-                        <Form.Control
+                        /> */}
+                        <FormField label="New password">
+                            <TextInput 
+                                required
+                                name="newPassword"
+                                value={newPassword}
+                                type="password"
+                                placeholder="Enter new password"
+                                onChange={e => setNewPassword(e.target.value)}
+                            />
+                        </FormField>
+                        {/* <Form.Control
                             required
                             name='newPassword'
                             value={newPassword}
                             type='password'
                             placeholder='New Password'
                             onChange={e => setNewPassword(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Button variant='primary' type='submit'>
-                        Submit
-                    </Button>
+                        /> */}
+                    <Button 
+                        type='submit'
+                        label="Change Password"
+                    />
                 </Form>
-            </div>
-        </div>
+        </Box>
     )
 }
 
