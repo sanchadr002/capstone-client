@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 // import Nav from 'react-bootstrap/Nav'
 // import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
-import { Box, Grommet, Nav, Anchor } from 'grommet'
+import { Box, Grommet, Nav, Anchor, Text } from 'grommet'
 
 const linkStyle = {
     color: 'white',
@@ -16,37 +16,37 @@ const authenticatedOptions = (
 				Change Password
 			</Link>
 		</Nav.Item> */}
-		<Anchor as={Link} to="change-password" label="Change Password"/>
+		<Anchor margin="small" as={Link} to="change-password" label="Change Password"/>
 		{/* <Nav.Item>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
 		</Nav.Item> */}
-		<Anchor as={Link} to="sign-out" label="Sign Out"/>
+		<Anchor margin="small" as={Link} to="sign-out" label="Sign Out"/>
 		{/* <Nav.Item>
 			<Link to='todolist' style={linkStyle}>
 				Your To-Do-List
 			</Link>
 		</Nav.Item> */}
-		<Anchor as={Link} to="todolist" label="Your To-Do List"/>
+		<Anchor margin="small" as={Link} to="todolist" label="Your To-Do List"/>
 		{/* <Nav.Item>
 			<Link to='character/create' style={linkStyle}>
 				Create Your Home Hero
 			</Link>
 		</Nav.Item> */}
-		<Anchor as={Link} to="character/create" label="Create Your Home Hero"/>
+		<Anchor margin="small" as={Link} to="character/create" label="Create Your Home Hero"/>
 		{/* <Nav.Item>
 			<Link to='character/view' style={linkStyle}>
 				Your Hero's Home
 			</Link>
 		</Nav.Item> */}
-		<Anchor as={Link} to="character/view" label="Your Hero's Home"/>
+		<Anchor margin="small" as={Link} to="character/view" label="Your Hero's Home"/>
 		{/* <Nav.Item>
             <Link to='store/view' style={linkStyle}>
                 Your Hero's Store
             </Link>
         </Nav.Item> */}
-		<Anchor as={Link} to="store/view" label="Your Hero's Store"/>
+		<Anchor margin="small" as={Link} to="store/view" label="Your Hero's Store"/>
 	</>
 )
 
@@ -55,11 +55,11 @@ const unauthenticatedOptions = (
         {/* <Nav.Item>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item> */}
-		<Anchor as={Link} to="sign-up" label="Sign Up"/>
+		<Anchor margin="small" as={Link} to="sign-up" label="Sign Up"/>
         {/* <Nav.Item>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item> */}
-		<Anchor as={Link} to="sign-in" label="Sign In"/>
+		<Anchor margin="small" as={Link} to="sign-in" label="Sign In"/>
 	</>
 )
 
@@ -70,7 +70,7 @@ const alwaysOptions = (
 				About Home Hero
 			</Link>
 		</Nav.Item> */}
-		<Anchor as={Link} to="/" label="About Home Hero"/>
+		<Anchor margin="small" as={Link} to="/" label="About Home Hero"/>
 	</>
 )
 
@@ -87,9 +87,9 @@ const AppBar = ({ user }) => (
 	// 	{...user}
 	// />
 	<Nav direction="row" background="brand" pad="medium">
-		<Anchor as={Link} to="/" label="Home Hero"/>
+		<Anchor margin="small" as={Link} to="/" label="Home Hero"/>
 		{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
+					<Text margin="small">Welcome, {user.email}</Text>
 				)}
 		{alwaysOptions}
 		{user ? authenticatedOptions : unauthenticatedOptions}
